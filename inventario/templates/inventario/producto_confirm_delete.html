@@ -1,0 +1,10 @@
+{% extends 'inventario/base.html' %}
+{% block content %}
+<h2>Eliminar producto</h2>
+<p>¿Seguro que deseas eliminar <strong>{{ object.nombre }}</strong>? Esta acción no se puede deshacer.</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger">Sí, eliminar</button>
+  <a class="btn btn-secondary" href="{% url 'admin_panel' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'inventario/base.html' %}
+{% block content %}
+<h2>Gestión de productos</h2>
+{% if perms.inventario.add_producto %}
+  <a class="btn btn-success mb-3" href="{% url 'producto_create' %}">+ Nuevo producto</a>
+{% endif %}
+<table class="table table-striped">
+  <tr><th>Nombre</th><th>SKU</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Ingreso</th><th>Acciones</th></tr>
+  {% for p in productos %}
+  <tr>
+    <td>{{ p.nombre }}</td><td>{{ p.sku }}</td><td>{{ p.categoria }}</td>
+    <td>${{ p.precio }}</td><td>{{ p.stock }}</td><td>{{ p.fecha_ingreso }}</td>
+    <td>
+      <a class="btn btn-info btn-sm" href="{% url 'producto_detail' p.pk %}">Ver</a>
+      {% if perms.inventario.change_producto %}
+        <a class="btn btn-warning btn-sm" href="{% url 'producto_update' p.pk %}">Editar</a>
+      {% endif %}
+      {% if perms.inventario.delete_producto %}
+        <a class="btn btn-danger btn-sm" href="{% url 'producto_delete' p.pk %}">Eliminar</a>
+      {% endif %}
+    </td>
+  </tr>
+  {% empty %}<tr><td colspan="7">Sin productos.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'inventario/base.html' %}
+{% block content %}
+<h2>{{ object.nombre }}</h2>
+<ul>
+  <li>SKU: {{ object.sku }}</li>
+  <li>Categoría: {{ object.categoria }}</li>
+  <li>Precio: ${{ object.precio }}</li>
+  <li>Stock: {{ object.stock }}</li>
+  <li>Fecha de ingreso: {{ object.fecha_ingreso }}</li>
+</ul>
+<a class="btn btn-secondary" href="{% url 'admin_panel' %}">Volver</a>
+{% endblock %}

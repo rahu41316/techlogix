@@ -1,0 +1,7 @@
+{% extends 'inventario/base.html' %}
+{% block content %}
+<h1>Bienvenido a TechLogix S.A.</h1>
+<p>Somos una empresa distribuidora de tecnologia dedicada y que garantiza la calidad en nuestros productos</p>
+<a class="btn btn-primary" href="{% url 'catalogo' %}">Ver catálogo</a>
+<a class="btn btn-dark" href="{% url 'login' %}">Acceso al área restringida</a>
+{% endblock %}
